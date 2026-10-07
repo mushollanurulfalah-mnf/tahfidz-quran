@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TAHFIDZ QUR'AN</title><meta name="theme-color" content="#0f6b4a"><link rel="manifest" href="manifest.json">
+<style>
+:root{--g:#16a06b;--gd:#0b4f38;--gold:#d4a62a;--bg:#f4f7f5;--c:#fff;--t:#1d2b25;--m:#6b7a73;--b:#e3ebe7;--r:#e0524a;--y:#e8b230;--bl:#3b82c4;--sh:0 4px 16px rgba(10,60,40,.08);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1714;--c:#16241f;--t:#e8f1ed;--m:#93a79e;--b:#243730}}
+:root[data-theme=dark]{--bg:#0e1714;--c:#16241f;--t:#e8f1ed;--m:#93a79e;--b:#243730}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;margin:0}body{font-family:system-ui,Segoe UI,sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden;line-height:1.5}
+button,input,select,textarea{font:inherit;color:inherit}
+.btn{background:var(--g);color:#fff;border:0;border-radius:14px;padding:12px 18px;font-weight:600;cursor:pointer;transition:.15s}
+.btn:hover{background:var(--gd);transform:translateY(-1px)}.btn.o{background:transparent;color:var(--g);border:2px solid var(--g)}.btn.r{background:var(--r)}.btn.s{padding:7px 12px;font-size:.85rem;border-radius:10px}.btn.gold{background:var(--gold)}
+input,select,textarea{width:100%;padding:11px 14px;border:1px solid var(--b);border-radius:12px;background:var(--c);margin:4px 0 10px}
+.card{background:var(--c);border-radius:18px;padding:18px;box-shadow:var(--sh);margin-bottom:14px;border:1px solid var(--b)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.stat{text-align:center}.stat b{display:block;font-size:1.5rem;color:var(--g)}.stat span{color:var(--m);font-size:.85rem}
+.bar{height:12px;background:var(--b);border-radius:9px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--g),var(--gold));border-radius:9px;transition:width .6s}
+.pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.78rem;color:#fff}.G{background:var(--g)}.Y{background:var(--y)}.R{background:var(--r)}.B{background:var(--bl)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.sp{justify-content:space-between}.m{color:var(--m);font-size:.88rem}
+.ar{font-family:'Amiri','Scheherazade New','Noto Naskh Arabic',serif;font-size:2rem;line-height:2.2;text-align:right;direction:rtl}
+#login{min-height:100vh;display:grid;place-items:center;padding:16px;background:linear-gradient(160deg,var(--gd),var(--g))}
+#login .card{max-width:400px;width:100%}.roles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.roles button{padding:12px 6px;border:2px solid var(--b);background:var(--c);border-radius:14px;cursor:pointer}.roles .on{border-color:var(--g);background:rgba(22,160,107,.12)}
+#app{display:none;min-height:100vh}header{position:sticky;top:0;z-index:5;background:var(--gd);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+header .ic{background:none;border:0;color:#fff;font-size:1.3rem;cursor:pointer;position:relative}
+.dot{position:absolute;top:-4px;right:-6px;background:var(--r);border-radius:10px;font-size:.65rem;padding:0 5px}
+nav#side{position:fixed;left:0;top:60px;bottom:0;width:220px;background:var(--c);border-right:1px solid var(--b);padding:12px;overflow-y:auto}
+nav a{display:block;padding:11px 14px;border-radius:12px;cursor:pointer;margin-bottom:4px}nav a:hover{background:rgba(22,160,107,.1)}nav a.on{background:var(--g);color:#fff}
+main{margin-left:220px;padding:18px;max-width:1100px}
+#bot{display:none}#burger{display:none}
+@media(max-width:800px){nav#side{display:none;z-index:9;top:56px;box-shadow:var(--sh)}nav#side.open{display:block}main{margin-left:0;padding:14px 12px 90px}#burger{display:block}.uname{display:none}
+#bot{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--c);border-top:1px solid var(--b);z-index:6;padding-bottom:env(safe-area-inset-bottom,0px)}#bot a{flex:1;text-align:center;padding:8px 2px;font-size:.72rem;cursor:pointer}#bot a b{display:block;font-size:1.3rem}#bot a.on{color:var(--g)}.ar{font-size:1.6rem}}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;place-items:center;z-index:20;padding:14px}.modal.show{display:grid}.modal .card{max-width:480px;width:100%;max-height:90vh;overflow:auto}
+.panel{position:fixed;right:10px;top:60px;width:min(320px,92vw);z-index:15;display:none}.panel.show{display:block}
+.tbl{width:100%;border-collapse:collapse}.tbl td,.tbl th{padding:9px 6px;border-bottom:1px solid var(--b);text-align:left;font-size:.9rem}
+@media(max-width:600px){.tbl thead{display:none}.tbl tr{display:block;border:1px solid var(--b);border-radius:12px;margin-bottom:8px;padding:6px}.tbl td{display:flex;justify-content:space-between;border:0}.tbl td::before{content:attr(data-l);color:var(--m)}}
+.opt{display:block;width:100%;text-align:left;padding:12px;margin:6px 0;border:2px solid var(--b);border-radius:12px;background:var(--c);cursor:pointer}.opt.ok{border-color:var(--g);background:rgba(22,160,107,.15)}.opt.no{border-color:var(--r);background:rgba(224,82,74,.12)}
+.bdg{text-align:center;padding:12px;border-radius:14px;background:var(--bg)}.bdg.off{filter:grayscale(1);opacity:.45}
+.hero{background:linear-gradient(120deg,var(--gd),var(--g));color:#fff;border-radius:20px;padding:20px;margin-bottom:14px}.hero h2{font-size:1.4rem}
+h3{margin-bottom:8px}h1{margin-bottom:12px}
+</style></head><body>
+<div id="login"><div class="card"><div style="text-align:center;font-size:2.4rem">📖</div><h2 style="text-align:center;color:var(--g)">TAHFIDZ QUR'AN</h2><p class="m" style="text-align:center;margin-bottom:12px">Teman Menghafal Al-Qur'an</p>
+<div class="roles" id="roles"></div>
+<label>Username / No. HP</label><input id="lu" autocomplete="username"><label>Password</label><input id="lp" type="password" autocomplete="current-password">
+<label class="row"><input type="checkbox" id="lr" style="width:auto;margin:0"> Remember me</label><p id="lerr" style="color:var(--r)"></p>
+<button class="btn" style="width:100%" onclick="doLogin()">Masuk</button>
+<p class="m" style="text-align:center;margin-top:10px"><a href="#" onclick="alert('Hubungi admin lembaga untuk reset password.');return false">Lupa Password?</a></p>
+<p class="m" style="margin-top:10px;font-size:.78rem">Belum punya akun? Hubungi admin lembaga.</p></div></div>
+<div id="app"><header><div class="row"><button class="ic" id="burger" onclick="$('#side').classList.toggle('open')">☰</button><span style="font-size:1.5rem">📖</span><div><b>TAHFIDZ QUR'AN</b><div style="font-size:.7rem;opacity:.8">Teman Menghafal Al-Qur'an</div></div></div>
+<div class="row"><button class="ic" onclick="$('#np').classList.toggle('show');renderNotif()">🔔<span class="dot" id="nc"></span></button><button class="ic" onclick="toggleDark()">🌙</button><span class="ic">👤</span><span class="uname" id="un"></span><button class="ic" onclick="logout()" title="Keluar">⎋</button></div></header>
+<div class="card panel" id="np"></div><nav id="side"></nav><main id="main"></main><div id="bot"></div></div>
+<div class="modal" id="md" onclick="if(event.target==this)closeM()"><div class="card" id="mc"></div></div>
+<script>
+/* ===== Storage (saveData/loadData/updateData/deleteData) ===== */
+const $=s=>document.querySelector(s);
+/* ===== KONFIGURASI: tempel URL Web App Google Apps Script di sini ===== */
+const API_URL='https://script.google.com/macros/s/AKfycbzZPH8ULvWDtOHPXvGY61dPQngdroVcGoj35bqI1UnUF8Xx7WSCfFx_2a0ph680FsJu/exec';
+const QAPI='https://equran.id/api/v2/surat/'; // sumber teks Qur'an & audio (Kemenag)
+async function api(a,x){const r=await fetch(API_URL,{method:'POST',body:JSON.stringify(Object.assign({a,token:TOKEN},x||{}))});return r.json()}
+const saveData=(k,v)=>{try{localStorage.setItem('tq_'+k,JSON.stringify(v))}catch(e){}};
+const loadData=(k,d)=>{try{const v=localStorage.getItem('tq_'+k);return v?JSON.parse(v):d}catch(e){return d}};
+const updateData=(k,fn,d)=>{const v=fn(loadData(k,d));saveData(k,v);return v};
+const deleteData=k=>{try{localStorage.removeItem('tq_'+k)}catch(e){}};
+/* ===== Data surah (nama latin:jumlah ayat). Teks ayat dimuat dari JSON terpercaya (lihat menu Al-Qur'an > Impor) ===== */
+const SR=("Al-Fatihah:7|Al-Baqarah:286|Ali 'Imran:200|An-Nisa':176|Al-Ma'idah:120|Al-An'am:165|Al-A'raf:206|Al-Anfal:75|At-Taubah:129|Yunus:109|Hud:123|Yusuf:111|Ar-Ra'd:43|Ibrahim:52|Al-Hijr:99|An-Nahl:128|Al-Isra':111|Al-Kahfi:110|Maryam:98|Ta-Ha:135|Al-Anbiya':112|Al-Hajj:78|Al-Mu'minun:118|An-Nur:64|Al-Furqan:77|Asy-Syu'ara':227|An-Naml:93|Al-Qasas:88|Al-'Ankabut:69|Ar-Rum:60|Luqman:34|As-Sajdah:30|Al-Ahzab:73|Saba':54|Fatir:45|Ya-Sin:83|As-Saffat:182|Sad:88|Az-Zumar:75|Gafir:85|Fussilat:54|Asy-Syura:53|Az-Zukhruf:89|Ad-Dukhan:59|Al-Jasiyah:37|Al-Ahqaf:35|Muhammad:38|Al-Fath:29|Al-Hujurat:18|Qaf:45|Az-Zariyat:60|At-Tur:49|An-Najm:62|Al-Qamar:55|Ar-Rahman:78|Al-Waqi'ah:96|Al-Hadid:29|Al-Mujadalah:22|Al-Hasyr:24|Al-Mumtahanah:13|As-Saff:14|Al-Jumu'ah:11|Al-Munafiqun:11|At-Tagabun:18|At-Talaq:12|At-Tahrim:12|Al-Mulk:30|Al-Qalam:52|Al-Haqqah:52|Al-Ma'arij:44|Nuh:28|Al-Jinn:28|Al-Muzzammil:20|Al-Muddassir:56|Al-Qiyamah:40|Al-Insan:31|Al-Mursalat:50|An-Naba':40|An-Nazi'at:46|'Abasa:42|At-Takwir:29|Al-Infitar:19|Al-Mutaffifin:36|Al-Insyiqaq:25|Al-Buruj:22|At-Tariq:17|Al-A'la:19|Al-Gasyiyah:26|Al-Fajr:30|Al-Balad:20|Asy-Syams:15|Al-Lail:21|Ad-Duha:11|Asy-Syarh:8|At-Tin:8|Al-'Alaq:19|Al-Qadr:5|Al-Bayyinah:8|Az-Zalzalah:8|Al-'Adiyat:11|Al-Qari'ah:11|At-Takasur:8|Al-'Asr:3|Al-Humazah:9|Al-Fil:5|Quraisy:4|Al-Ma'un:7|Al-Kausar:3|Al-Kafirun:6|An-Nasr:3|Al-Masad:5|Al-Ikhlas:4|Al-Falaq:5|An-Nas:6").split('|').map((s,i)=>{const[n,a]=s.split(':');return{id:i+1,nama:n,ayat:+a}});
+const TJ=[["Nun Sukun & Tanwin","Hukum bacaan saat nun sukun/tanwin bertemu huruf hijaiyah.","Izhar, Idgham, Iqlab, Ikhfa","Izhar: ء ه ع ح غ خ • Iqlab: ب • Idgham: ي ر م ل و ن • Ikhfa: 15 huruf lainnya","Jangan menahan dengung pada izhar; jangan membaca iqlab seperti izhar."],
+["Iqlab","Nun sukun/tanwin bertemu ب diubah menjadi mim dengan dengung.","Iqlab","Huruf: ب","Lupa mendengungkan saat mengubah suara menjadi mim."],
+["Mim Sukun","Hukum saat mim sukun bertemu huruf.","Ikhfa Syafawi, Idgham Mimi, Izhar Syafawi","Ikhfa syafawi: ب • Idgham mimi: م • Izhar syafawi: selain keduanya","Menutup bibir terlalu rapat pada izhar syafawi."],
+["Mad Thabi'i","Mad asli, dibaca 2 harakat.","Mad Thabi'i","Alif, wawu, ya' mad","Dibaca terlalu pendek atau terlalu panjang."],
+["Mad Far'i","Mad cabang: Wajib Muttashil, Jaiz Munfashil, 'Aridh Lissukun, Lazim.","Mad Far'i","Hamzah/sukun setelah huruf mad","Panjang tidak sama antar baris bacaan."],
+["Qalqalah","Memantulkan bunyi pada huruf sukun.","Qalqalah","ق ط ب ج د","Memantul terlalu keras atau tidak memantul."],
+["Ghunnah","Dengung yang ditahan sekitar 2 harakat.","Ghunnah","Nun & mim bertasydid","Dengung terlalu cepat."],
+["Lam Jalalah","Lam pada lafaz Allah: tafkhim atau tarqiq tergantung huruf sebelumnya.","Tafkhim / Tarqiq","Setelah fathah/dammah: tebal • setelah kasrah: tipis","Selalu membaca tipis."],
+["Waqaf & Ibtida","Cara berhenti dan memulai bacaan.","Waqaf, Ibtida","Tanda: م ط ج ز لا","Berhenti di tengah makna yang belum selesai."]];
+const QZ=[["Nun sukun bertemu huruf ب disebut hukum apa?",["Izhar","Iqlab","Ikhfa","Idgham"],1,"Nun sukun/tanwin bertemu ba' = Iqlab."],
+["Mad Thabi'i dibaca berapa harakat?",["2","4","5","6"],0,"Mad asli dibaca 2 harakat."],
+["Huruf qalqalah adalah...",["ق ط ب ج د","ء ه ع ح","ي ر م ل","س ش ص"],0,"Qalqalah: ق ط ب ج د."],
+["Mim sukun bertemu ب disebut...",["Izhar Syafawi","Ikhfa Syafawi","Idgham Mimi","Iqlab"],1,"Mim sukun + ba' = Ikhfa Syafawi."],
+["Izhar halqi terjadi bila nun sukun bertemu huruf...",["ب","م","ع","ر"],2,"ع termasuk huruf halqi (tenggorokan)."],
+["Lam pada lafaz Allah setelah kasrah dibaca...",["Tebal","Tipis","Panjang","Dengung"],1,"Setelah kasrah dibaca tarqiq (tipis)."]];
+const BD=[["🏅","Hafalan Pertama",d=>d.ayatH>=1],["🏅","100 Ayat",d=>d.ayatH>=100],["🏅","500 Ayat",d=>d.ayatH>=500],["🏅","1000 Ayat",d=>d.ayatH>=1000],["🏅","7 Hari Istiqamah",d=>d.streak>=7],["🏅","Tajwid Expert",d=>d.quizBest>=80],["🏅","Rajin Setoran",d=>d.setor>=3]];
+const LV=["Pemula","Rajin","Tekun","Hafidz Muda","Pejuang Qur'an"];
+const MOT=["MasyaAllah! Hafalanmu bertambah hari ini.","Hebat! Tetap istiqamah.","Sedikit demi sedikit, InsyaAllah menjadi banyak."];
+/* ===== State ===== */
+const DEF={users:[],santri:[],setoran:[],murojaah:[],att:[],bm:[],targets:[],todo:{d:'',a:[0,0,0,0]},notif:[],set:{lembaga:"TAHFIDZ QUR'AN",wa:'',xpSetor:100}};
+const TK=loadData('tok',null);let TOKEN=TK?TK.t:null,FAIL={},lp=0,pT=null;
+const EMPTY={id:0,nama:'-',kelas:'',juz:30,ayatH:0,xp:0,streak:0,quizBest:0,setor:0,progress:0};
+let D=JSON.parse(JSON.stringify(DEF)),ME=null,role='santri',V='home',ayatDB=loadData('ayat',[]);
+const sv=()=>{clearTimeout(pT);pT=setTimeout(push,700)};
+async function push(){pT=null;if(!TOKEN)return;try{const db=Object.assign({},D);delete db.users;delete db.notif;const r=await api('save',{db});if(r.err=='auth')logout();else if(r.err)alert('Gagal menyimpan: '+r.err)}catch(e){alert('Tidak ada koneksi. Data belum tersimpan di server.')}}
+function pull(){if(Date.now()-lp<10000)return;lp=Date.now();api('load').then(r=>{if(r.db&&!pT){const n=D.notif,o=JSON.stringify(D);D=Object.assign(JSON.parse(JSON.stringify(DEF)),r.db);D.notif=n;if(JSON.stringify(D)!=o&&!document.querySelector('.modal.show'))go(V,1)}}).catch(()=>{})}
+const $S=()=>D.santri.find(s=>s.id==ME.sid)||D.santri[0]||EMPTY;
+const lvl=x=>Math.min(4,Math.floor(x/500));
+function addXP(n){const s=$S();s.xp+=n;sv()}
+/* ===== Auth ===== */
+const RL=[['admin','👨‍💼 Admin'],['ustadz','👨‍🏫 Ustadz'],['santri','👦 Santri'],['ortu','👨‍👩‍👧 Orang Tua']];
+function drawRoles(){$('#roles').innerHTML=RL.map(r=>`<button class="${r[0]==role?'on':''}" onclick="role='${r[0]}';drawRoles()">${r[1]}</button>`).join('')}
+async function doLogin(){const u=$('#lu').value.trim(),p=$('#lp').value;if(!u||!p){$('#lerr').textContent='Isi username dan password.';return}
+ if(API_URL.startsWith('PASTE')){$('#lerr').textContent='Backend belum dikonfigurasi (isi API_URL).';return}
+ $('#lerr').textContent='Memproses...';try{const r=await api('login',{u,p,role});if(!r.ok){$('#lerr').textContent=r.err||'Gagal masuk';return}
+ TOKEN=r.token;ME=r.user;D=Object.assign(JSON.parse(JSON.stringify(DEF)),r.db);if($('#lr').checked)saveData('tok',{t:TOKEN,u:ME});$('#lerr').textContent='';$('#lp').value='';start()}catch(e){$('#lerr').textContent='Tidak dapat terhubung ke server.'}}
+function logout(){ME=null;TOKEN=null;D=JSON.parse(JSON.stringify(DEF));deleteData('tok');deleteData('db');$('#app').style.display='none';$('#login').style.display='grid'}
+const MENU={admin:[['home','🏠','Dashboard'],['santri','👥','Santri'],['setoran','🎤','Setoran'],['absen','🗓','Absensi'],['quran',"📖","Al-Qur'an"],['admin','⚙️','Admin & Ekspor']],
+ustadz:[['home','🏠','Dashboard'],['santri','👥','Santri'],['setoran','🎤','Nilai Setoran'],['absen','🗓','Absensi'],['quran','📖',"Al-Qur'an"],['tajwid','📚','Tajwid']],
+santri:[['home','🏠','Home'],['quran','📖',"Qur'an"],['hafalan','🧠','Hafalan'],['murojaah','🔄','Murojaah'],['tajwid','📚','Tajwid'],['latihan','📝','Latihan'],['setoran','🎤','Setoran'],['prestasi','🏆','Prestasi'],['target','🎯','Target'],['bm','⭐','Bookmark']],
+ortu:[['home','🏠','Perkembangan Anak'],['absen','🗓','Kehadiran']]};
+function start(){if(ME.role=='santri'){const s=$S(),t=new Date().toDateString();if(s.id&&s.lastDay!=t){const y=new Date(Date.now()-864e5).toDateString();s.streak=s.lastDay==y?(s.streak||0)+1:1;s.lastDay=t;if(s.streak==7){s.xp+=150;D.notif.push('🔔 Streak 7 hari! +150 XP')}sv()}}
+ $('#login').style.display='none';$('#app').style.display='block';$('#un').textContent=ME.nama;
+ const m=MENU[ME.role];$('#side').innerHTML=m.map(x=>`<a data-v="${x[0]}" onclick="go('${x[0]}')">${x[1]} ${x[2]}</a>`).join('');
+ const b=m.slice(0,4).concat([['menu','☰','Menu']]);$('#bot').innerHTML=b.map(x=>`<a data-v="${x[0]}" onclick="${x[0]=='menu'?"$('#side').classList.toggle('open')":`go('${x[0]}')`}"><b>${x[1]}</b>${x[2]}</a>`).join('');go('home')}
+function go(v,np){V=v;if(ME&&!np)pull();$('#side').classList.remove('open');document.querySelectorAll('nav a,#bot a').forEach(a=>a.classList.toggle('on',a.dataset.v==v));
+ $('#nc').textContent=D.notif.length||'';const f=VIEWS[v]||VIEWS.home;$('#main').innerHTML=f();window.scrollTo(0,0);if(AFTER[v])AFTER[v]()}
+const AFTER={};
+function openM(h){$('#mc').innerHTML=h;$('#md').classList.add('show')}function closeM(){$('#md').classList.remove('show')}
+function renderNotif(){$('#np').innerHTML='<h3>Notifikasi</h3>'+(D.notif.map(n=>`<p style="margin:6px 0">${n}</p>`).join('')||'<p class="m">Belum ada.</p>')+'<button class="btn s o" onclick="D.notif=[];sv();renderNotif();$(\'#nc\').textContent=\'\'">Bersihkan</button>'}
+function toggleDark(){const d=document.documentElement;const n=d.dataset.theme=='dark'?'light':'dark';d.dataset.theme=n;saveData('dark',n)}
+document.documentElement.dataset.theme=loadData('dark','light');
+const bar=(p,l)=>`<div class="row sp m"><span>${l||''}</span><span>${p}%</span></div><div class="bar"><i style="width:${p}%"></i></div>`;
+const days=t=>Math.floor((Date.now()-t)/864e5);
+/* ===== Views ===== */
+const VIEWS={
+home(){const r=ME.role;if(r=='santri'||r=='ortu')return homeSantri();return homeUstadz()},
+};
+function homeSantri(){const s=$S(),t=(D.todo=s.todo=(s.todo&&s.todo.a?s.todo:{d:'',a:[0,0,0,0]})),today=new Date().toDateString();if(t.d!=today){t.d=today;t.a=[0,0,0,0];sv()}
+ const names=['Hafalan baru','Murojaah','Belajar tajwid','Latihan'];const pct=Math.round(t.a.filter(Boolean).length*25);
+ const ortu=ME.role=='ortu';
+ return `<div class="hero"><h2>${ortu?'Perkembangan '+s.nama:"Assalamu'alaikum, "+s.nama+" 👋"}</h2><p>${ortu?'Pantau hafalan anak Anda.':'Semangat menghafal hari ini!'}</p></div>
+ <div class="grid"><div class="card stat"><b>📖 ${s.juz>0?Math.round(s.ayatH/6236*30*10)/10:0} Juz</b><span>Total Hafalan (${s.ayatH} ayat)</span></div><div class="card stat"><b>🎯 ${pct}%</b><span>Target Hari Ini</span></div><div class="card stat"><b>🔄 ${D.murojaah.filter(m=>m.sid==s.id).length}</b><span>Murojaah (surah)</span></div><div class="card stat"><b>⭐ ${s.xp}</b><span>XP • Level ${lvl(s.xp)+1} ${LV[lvl(s.xp)]}</span></div><div class="card stat"><b>🔥 ${s.streak}</b><span>Hari Streak</span></div></div>
+ <div class="grid2"><div class="card"><h3>Progress Hafalan</h3>${bar(s.progress,'Juz '+s.juz)}${bar(Math.max(0,s.progress-25),'Juz '+(s.juz-1))}${ortu?`<h3>Grafik Mingguan</h3><div class="row" style="align-items:flex-end;height:90px">${[65,72,78,s.progress].map((v,i)=>`<div style="flex:1;text-align:center"><div style="height:${v*.8}px;background:var(--g);border-radius:8px 8px 0 0"></div><span class="m">M${i+1}</span></div>`).join('')}</div>`:''}</div>
+ ${ortu?`<div class="card"><h3>Catatan Ustadz</h3>${D.setoran.filter(x=>x.sid==s.id&&x.cat).slice(-3).map(x=>`<p>• ${x.cat}</p>`).join('')||'<p class="m">Belum ada catatan.</p>'}<p class="m">Setoran dinilai: ${D.setoran.filter(x=>x.sid==s.id&&x.st!='W').length}</p></div>`:
+ `<div class="card"><h3>Target Hari Ini</h3>${names.map((n,i)=>`<label class="row" style="padding:6px 0"><input type="checkbox" style="width:auto;margin:0" ${t.a[i]?'checked':''} onchange="D.todo.a[${i}]=this.checked?1:0;sv();if(this.checked){addXP(10);D.notif.push('🔔 Selamat! +10 XP');sv()}go('home')"> ${n}</label>`).join('')}
+ <div class="row" style="margin-top:8px"><button class="btn" onclick="go('hafalan')">▶ Mulai Hafalan</button><button class="btn o" onclick="go('murojaah')">🔄 Mulai Murojaah</button><button class="btn gold" onclick="go('tajwid')">📚 Belajar Tajwid</button></div></div>`}</div>
+ <p class="m" style="text-align:center">${MOT[new Date().getDate()%3]}</p>`}
+function homeUstadz(){const S=D.santri,td=D.setoran.filter(x=>days(x.t)==0).length,att=S.filter(s=>s.progress<50||s.streak<3);
+ return `<h1>Dashboard ${ME.role=='admin'?'Admin':'Ustadz'}</h1><div class="grid"><div class="card stat"><b>${S.length}</b><span>Total Santri</span></div><div class="card stat"><b>${S.reduce((a,s)=>a+s.ayatH,0)}</b><span>Total Ayat Hafal</span></div><div class="card stat"><b>${td}</b><span>Setoran Hari Ini</span></div><div class="card stat"><b>${D.setoran.filter(x=>x.st=='W').length}</b><span>Menunggu Nilai</span></div><div class="card stat"><b>${att.length}</b><span>Perlu Perhatian</span></div></div>${tblSantri()}`}
+let q='';function tblSantri(){const L=D.santri.filter(s=>s.nama.toLowerCase().includes(q.toLowerCase()));
+ return `<div class="card"><div class="row sp"><h3>Daftar Santri</h3><button class="btn s" onclick="formSantri()">+ Tambah</button></div><input placeholder="🔍 Cari santri..." value="${q}" oninput="q=this.value;$('#tb').innerHTML=rows()" id="qs"><table class="tbl"><thead><tr><th>Nama</th><th>Juz</th><th>Progress</th><th>Setoran</th><th>Status</th><th></th></tr></thead><tbody id="tb">${rows()}</tbody></table></div>`}
+function rows(){return D.santri.filter(s=>s.nama.toLowerCase().includes(q.toLowerCase())).map(s=>{const st=D.setoran.filter(x=>x.sid==s.id);const ok=s.progress>=50;return `<tr><td data-l="Nama">${s.nama} (${s.kelas})</td><td data-l="Juz">${s.juz}</td><td data-l="Progress">${s.progress}%</td><td data-l="Setoran">${st.length}</td><td data-l="Status"><span class="pill ${ok?'G':'R'}">${ok?'Lancar':'Perlu Perhatian'}</span></td><td><button class="btn s o" onclick="formSantri(${s.id})">Edit</button> <button class="btn s r" onclick="delSantri(${s.id})">Hapus</button></td></tr>`}).join('')||'<tr><td>Tidak ada data</td></tr>'}
+function formSantri(id){const s=D.santri.find(x=>x.id==id)||{nama:'',kelas:'',juz:30,progress:0,ayatH:0};
+ openM(`<h3>${id?'Edit':'Tambah'} Santri</h3><label>Nama</label><input id="fn" value="${s.nama}"><label>Kelas</label><input id="fk" value="${s.kelas}"><label>Juz</label><input id="fj" type="number" min="1" max="30" value="${s.juz}"><label>Progress (%)</label><input id="fp" type="number" min="0" max="100" value="${s.progress}"><div class="row"><button class="btn" onclick="saveSantri(${id||0})">Simpan</button><button class="btn o" onclick="closeM()">Batal</button></div>`)}
+function saveSantri(id){const n=$('#fn').value.trim();if(!n){alert('Nama wajib diisi');return}
+ const o={nama:n,kelas:$('#fk').value,juz:+$('#fj').value||30,progress:Math.min(100,+$('#fp').value||0)};
+ if(id)Object.assign(D.santri.find(x=>x.id==id),o);else D.santri.push({id:Date.now(),ayatH:0,xp:0,streak:0,quizBest:0,setor:0,...o});sv();closeM();go(V)}
+function delSantri(id){if(confirm('Hapus santri ini?')){D.santri=D.santri.filter(x=>x.id!=id);sv();go(V)}}
+VIEWS.santri=()=>`<h1>Data Santri</h1>`+tblSantri();
+/* Al-Qur'an */
+let qs='',sv_=null;
+VIEWS.quran=()=>{if(sv_)return suratView(sv_);const L=SR.filter(s=>s.nama.toLowerCase().includes(qs.toLowerCase())||String(s.id)==qs);
+ return `<h1>📖 Al-Qur'an</h1><div class="card"><input placeholder="🔍 Cari surah / nomor..." value="${qs}" oninput="qs=this.value;$('#sl').innerHTML=listS()"><p class="m">Teks &amp; audio dimuat otomatis dari equran.id saat surah dibuka. Opsional: impor JSON sendiri.</p><input type="file" accept=".json" onchange="impAyat(this)"></div><div class="grid2" id="sl">${listS()}</div>`};
+function listS(){return SR.filter(s=>s.nama.toLowerCase().includes(qs.toLowerCase())||String(s.id)==qs).map(s=>`<div class="card row sp" style="cursor:pointer;margin:0" onclick="sv_=${s.id};go('quran')"><div><b>${s.id}. ${s.nama}</b><div class="m">${s.ayat} ayat • Juz ${s.id>=78?30:s.id>=67?29:'-'}</div></div><span>›</span></div>`).join('')}
+let AU=new Audio();function playA(u){AU.src=u;AU.play().catch(()=>alert('Audio tidak dapat diputar'))}
+async function loadSurah(id){if(ayatDB.some(a=>a.surahId==id))return true;try{const j=await(await fetch(QAPI+id)).json(),L=(j.data&&j.data.ayat)||[];if(!L.length)return false;
+ ayatDB=ayatDB.concat(L.map(a=>({surahId:id,nomorAyat:a.nomorAyat,teksArab:a.teksArab,transliterasi:a.teksLatin,terjemahan:a.teksIndonesia,audio:a.audio?(a.audio['05']||Object.values(a.audio)[0]):''})));try{saveData('ayat',ayatDB)}catch(e){}return true}catch(e){return false}}
+function hLoad(){if(!ayatDB.some(x=>x.surahId==H.s)&&!FAIL[H.s])loadSurah(H.s).then(ok=>{if(!ok)FAIL[H.s]=1;if(V=='hafalan')go('hafalan',1)})}
+function impAyat(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const a=JSON.parse(r.result);if(!Array.isArray(a))throw 0;ayatDB=a;saveData('ayat',a);alert('Berhasil: '+a.length+' ayat');go('quran')}catch(e){alert('File JSON tidak valid / terlalu besar')}};r.readAsText(f)}
+function suratView(id){if(!ayatDB.some(a=>a.surahId==id)&&!FAIL[id]){loadSurah(id).then(ok=>{if(!ok)FAIL[id]=1;if(V=='quran'&&sv_==id)go('quran',1)});return '<p class="card">Memuat ayat...</p>'}
+ const s=SR[id-1],A=ayatDB.filter(a=>a.surahId==id);const bm=D.bm;
+ return `<button class="btn s o" onclick="sv_=null;go('quran')">← Kembali</button><h1 style="margin-top:10px">${s.id}. ${s.nama}</h1>${A.length?A.map(a=>`<div class="card"><div class="row sp"><span class="pill G">${a.nomorAyat}</span><span>${a.audio?`<button class="btn s o" onclick="playA('${a.audio}')">🔊</button> `:''}<button class="btn s o" onclick="toggleBm(${id},${a.nomorAyat})">${bm.some(b=>b.s==id&&b.a==a.nomorAyat&&b.sid==$S().id)?'★':'☆'}</button> <button class="btn s" onclick="addH(${id},${a.nomorAyat})">Masukkan ke Hafalan</button></div><div class="ar">${a.teksArab}</div><p class="m">${a.terjemahan||''}</p></div>`).join(''):`<div class="card"><p>Teks ayat surah ini belum dimuat. Impor file JSON Qur'an dari sumber terpercaya di halaman daftar surah.</p></div>`}`}
+function toggleBm(s,a){const i=D.bm.findIndex(b=>b.s==s&&b.a==a&&b.sid==$S().id);if(i>=0)D.bm.splice(i,1);else D.bm.push({s,a,sid:$S().id});sv();go('quran')}
+function addH(s,a){const x=$S();x.ayatH++;addXP(50);sv();alert('MasyaAllah! Ayat masuk hafalan. +50 XP')}
+VIEWS.bm=()=>`<h1>⭐ Bookmark Saya</h1>`+(D.bm.filter(b=>b.sid==$S().id).map(b=>`<div class="card row sp">${SR[b.s-1].nama} : ${b.a}<button class="btn s r" onclick="toggleBm(${b.s},${b.a});go('bm')">Hapus</button></div>`).join('')||'<p class="m">Belum ada bookmark.</p>');
+/* Hafalan */
+let H={s:1,a:1,rep:3,c:0,hid:false};
+VIEWS.hafalan=()=>{hLoad();const s=SR[H.s-1],a=ayatDB.find(x=>x.surahId==H.s&&x.nomorAyat==H.a);
+ return `<h1>🧠 Mode Hafalan</h1><div class="card"><div class="grid2"><div><label>Surah</label><select onchange="H.s=+this.value;H.a=1;H.c=0;H.hid=false;go('hafalan')">${SR.map(x=>`<option value="${x.id}" ${x.id==H.s?'selected':''}>${x.id}. ${x.nama}</option>`).join('')}</select></div><div><label>Ayat</label><input type="number" min="1" max="${s.ayat}" value="${H.a}" onchange="H.a=Math.min(s_(),Math.max(1,+this.value));H.c=0;H.hid=false;go('hafalan')"></div></div>
+ <div class="row">${[1,3,5,10,0].map(n=>`<button class="btn s ${H.rep==n?'':'o'}" onclick="H.rep=${n};go('hafalan')">${n||'∞'}x</button>`).join('')}</div></div>
+ <div class="card">${a?(H.hid?`<p style="text-align:center;font-size:1.2rem;padding:30px 0">Silakan lanjutkan ayat berikutnya. 🤲</p>`:`<div class="ar">${a.teksArab}</div><p class="m">${a.terjemahan||''}</p>`):'<p>Teks ayat belum dimuat. Impor JSON di menu Al-Qur\'an.</p>'}
+ <p class="m">Dibaca: ${H.c}${H.rep?' / '+H.rep:''}x</p><div class="row"><button class="btn" onclick="H.c++;if(H.rep&&H.c>=H.rep)H.hid=true;go('hafalan')">🔁 Saya sudah baca</button>${a&&a.audio?`<button class="btn o" onclick="playA('${a.audio}')">🔊 Dengarkan</button>`:''}<button class="btn o" onclick="H.hid=!H.hid;go('hafalan')">👁 Sembunyikan/Tampilkan</button></div>
+ <div class="row" style="margin-top:10px"><button class="btn" onclick="ingat()">✅ Saya Ingat</button><button class="btn r" onclick="lupa()">❌ Masih Lupa</button></div></div>`};
+const s_=()=>SR[H.s-1].ayat;
+function ingat(){const x=$S();x.ayatH++;x.progress=Math.min(100,x.progress+1);addXP(50);sv();alert('MasyaAllah! Hafalanmu bertambah. +50 XP');if(H.a<s_())H.a++;H.c=0;H.hid=false;go('hafalan')}
+function lupa(){H.hid=false;const x=$S();let m=D.murojaah.find(m=>m.sid==x.id&&m.s==H.s);if(!m){m={sid:x.id,s:H.s,nilai:70,err:0,last:Date.now()};D.murojaah.push(m)}m.err++;sv();alert('Tidak apa-apa, ulangi lagi ya. Sedikit demi sedikit!');go('hafalan')}
+/* Murojaah: skor prioritas = (100-nilai)*.5 + kesalahan*5 + hari tidak murojaah*3 */
+function pri(m){return (100-m.nilai)*.5+m.err*5+days(m.last)*3}
+VIEWS.murojaah=()=>{const L=D.murojaah.filter(m=>m.sid==$S().id).sort((a,b)=>pri(b)-pri(a));
+ return `<h1>🔄 Murojaah</h1><div class="card"><button class="btn s" onclick="openM(addMur())">+ Tambah Hafalan Lama</button></div>`+(L.map(m=>{const p=pri(m),c=p>=60?['R','🔴 Perlu Murojaah']:p>=30?['Y','🟡 Cukup']:['G','🟢 Lancar'];const i=D.murojaah.indexOf(m);return `<div class="card row sp"><div><b>Surah ${SR[m.s-1].nama}</b><div class="m">Terakhir: ${days(m.last)==0?'Hari ini':days(m.last)+' hari lalu'} • nilai ${m.nilai}</div><span class="pill ${c[0]}">${c[1]}</span></div><button class="btn s" onclick="murDone(${i})">Selesai Murojaah</button></div>`}).join('')||'<p class="m">Belum ada murojaah.</p>')};
+function addMur(){return `<h3>Tambah Murojaah</h3><select id="ms">${SR.map(x=>`<option value="${x.id}">${x.nama}</option>`).join('')}</select><button class="btn" onclick="D.murojaah.push({sid:$S().id,s:+$('#ms').value,nilai:70,err:0,last:Date.now()});sv();closeM();go('murojaah')">Simpan</button>`}
+function murDone(i){const m=D.murojaah[i];m.last=Date.now();m.nilai=Math.min(100,m.nilai+5);m.err=Math.max(0,m.err-1);addXP(20);sv();go('murojaah')}
+/* Tajwid */
+VIEWS.tajwid=()=>`<h1>📚 Belajar Tajwid</h1><div class="grid2">${TJ.map((t,i)=>`<div class="card" style="cursor:pointer" onclick="openM(tjM(${i}))"><h3>${t[0]}</h3><p class="m">${t[1]}</p></div>`).join('')}</div>`;
+function tjM(i){const t=TJ[i];return `<h3>${t[0]}</h3><p><b>Pengertian:</b> ${t[1]}</p><p><b>Hukum:</b> ${t[2]}</p><p><b>Huruf:</b> ${t[3]}</p><p><b>Kesalahan umum:</b> ${t[4]}</p><div class="row" style="margin-top:10px"><button class="btn" onclick="closeM();go('latihan')">Latihan</button><button class="btn o" onclick="closeM()">Tutup</button></div>`}
+/* Latihan / quiz */
+let Q=null;
+VIEWS.latihan=()=>{if(!Q)Q={i:0,sc:0,ans:null};if(Q.i>=QZ.length){const n=Math.round(Q.sc/(QZ.length*10)*100),x=$S();x.quizBest=Math.max(x.quizBest,n);sv();const r=`<h1>📝 Selesai!</h1><div class="card stat"><b>Nilai: ${n}/100</b><span>${n>=80?'Bagus! Terus berlatih.':'Ayo belajar lagi, kamu pasti bisa!'}</span><br><button class="btn" onclick="Q=null;go('latihan')">Ulangi</button></div>`;return r}
+ const q=QZ[Q.i];return `<h1>📝 Latihan Tajwid</h1><div class="card"><p class="m">Soal ${Q.i+1}/${QZ.length} • Skor ${Q.sc}</p><h3>${q[0]}</h3>${q[1].map((o,k)=>`<button class="opt ${Q.ans!=null?(k==q[2]?'ok':k==Q.ans?'no':''):''}" ${Q.ans!=null?'disabled':''} onclick="ans(${k})">${'ABCD'[k]}. ${o}</button>`).join('')}${Q.ans!=null?`<p>${Q.ans==q[2]?'✅ Benar!':'❌ Belum tepat.'} ${q[3]}</p><button class="btn" onclick="Q.i++;Q.ans=null;go('latihan')">Lanjut ›</button>`:''}</div>`};
+function ans(k){Q.ans=k;if(k==QZ[Q.i][2]){Q.sc+=10;addXP(10)}go('latihan')}
+/* Setoran */
+let MR=null,chunks=[],lastURL=null;
+VIEWS.setoran=()=>{const r=ME.role;if(r=='santri')return `<h1>🎤 Setoran Hafalan</h1><div class="card"><div class="grid2"><div><label>Surah</label><select id="ss">${SR.map(x=>`<option value="${x.id}">${x.nama}</option>`).join('')}</select></div><div><label>Ayat (mis. 1-5)</label><input id="sa" value="1-5"></div></div><div class="row"><button class="btn r" onclick="rec()">🔴 Mulai Rekam</button><button class="btn o" onclick="stopRec()">⏹ Selesai</button></div><audio id="au" controls style="width:100%;margin-top:10px;display:none"></audio><p id="rs" class="m"></p><button class="btn" onclick="sendSet()">Kirim Setoran</button></div><h3>Riwayat</h3>`+setList(D.setoran.filter(x=>x.sid==$S().id),false);
+ return `<h1>Penilaian Setoran</h1>`+setList(D.setoran,true)};
+function setList(L,g){return L.slice().reverse().map(x=>{const i=D.setoran.indexOf(x),sn=D.santri.find(s=>s.id==x.sid);return `<div class="card"><div class="row sp"><b>${sn?sn.nama:'-'} • ${SR[x.s-1].nama} ${x.a}</b><span class="pill ${x.st=='W'?'Y':x.st=='L'?'G':'R'}">${x.st=='W'?'🟡 Menunggu':x.st=='L'?'🟢 Lulus':'🔴 Ulang'}</span></div>${x.n?`<p class="m">Kelancaran ${x.n[0]} • Tajwid ${x.n[1]} • Makhraj ${x.n[2]} • Panjang-Pendek ${x.n[3]}</p>`:''}${x.cat?`<p>“${x.cat}”</p>`:''}${g&&x.st=='W'?`<button class="btn s" onclick="gradeF(${i})">Beri Nilai</button>`:''}</div>`}).join('')||'<p class="m">Belum ada setoran.</p>'}
+async function rec(){try{const st=await navigator.mediaDevices.getUserMedia({audio:true});MR=new MediaRecorder(st);chunks=[];MR.ondataavailable=e=>chunks.push(e.data);MR.onstop=()=>{lastURL=URL.createObjectURL(new Blob(chunks));const a=$('#au');if(a){a.src=lastURL;a.style.display='block'}st.getTracks().forEach(t=>t.stop())};MR.start();$('#rs').textContent='🔴 Merekam...'}catch(e){$('#rs').textContent='Rekaman tidak tersedia di perangkat/browser ini. Setoran tetap bisa dikirim.'}}
+function stopRec(){if(MR&&MR.state=='recording'){MR.stop();$('#rs').textContent='Rekaman selesai.'}}
+function sendSet(){D.setoran.push({sid:$S().id,s:+$('#ss').value,a:$('#sa').value,st:'W',t:Date.now()});D.notif.push('🔔 Setoran dikirim, menunggu penilaian ustadz.');sv();alert('Menunggu penilaian ustadz.');go('setoran')}
+function gradeF(i){openM(`<h3>Nilai Setoran</h3>${['Kelancaran','Tajwid','Makhraj','Panjang Pendek'].map((l,k)=>`<label>${l} (1–5)</label><input type="number" min="1" max="5" value="4" id="g${k}">`).join('')}<label>Catatan</label><textarea id="gc"></textarea><label>Status</label><select id="gs"><option value="L">🟢 Lulus</option><option value="U">🔴 Ulang</option></select><button class="btn" onclick="grade(${i})">Simpan</button>`)}
+function grade(i){const x=D.setoran[i];x.n=[0,1,2,3].map(k=>Math.min(5,Math.max(1,+$('#g'+k).value||1)));x.cat=$('#gc').value;x.st=$('#gs').value;const s=D.santri.find(s=>s.id==x.sid);if(x.st=='L'&&s){s.xp+=D.set.xpSetor;s.setor++}
+ const m=D.murojaah.find(m=>m.sid==x.sid&&m.s==x.s);if(m)m.nilai=Math.round(x.n.reduce((a,b)=>a+b)/20*100);D.notif.push('🔔 Setoran hafalan telah dinilai ustadz.');sv();closeM();go('setoran')}
+/* Prestasi, target, absen, admin */
+VIEWS.prestasi=()=>{const s=$S();return `<h1>🏆 Prestasi</h1><div class="card">Level ${lvl(s.xp)+1} — ${LV[lvl(s.xp)]} • ${s.xp} XP</div><div class="grid">${BD.map(b=>`<div class="bdg ${b[2](s)?'':'off'}"><div style="font-size:2rem">${b[0]}</div>${b[1]}</div>`).join('')}</div>`};
+VIEWS.target=()=>`<h1>🎯 Target</h1>${D.targets.map((t,i)=>t.sid!=$S().id?'':`<div class="card">${bar(Math.round(t.done/t.target*100),t.t)}<p class="m">${t.done}/${t.target} halaman</p><button class="btn s" onclick="D.targets[${i}].done=Math.min(${t.target},D.targets[${i}].done+1);sv();go('target')">+1 halaman</button> <button class="btn s r" onclick="D.targets.splice(${i},1);sv();go('target')">Hapus</button></div>`).join('')}<div class="card"><input id="tt" placeholder="Nama target (harian/mingguan/bulanan)"><input id="tn" type="number" placeholder="Jumlah halaman"><button class="btn" onclick="if($('#tt').value&&+$('#tn').value>0){D.targets.push({sid:$S().id,t:$('#tt').value,target:+$('#tn').value,done:0});sv();go('target')}">Tambah Target</button></div>`;
+VIEWS.absen=()=>{const ed=ME.role!='ortu',L=ME.role=='ortu'?D.att.filter(a=>a.sid==$S().id):D.att,h=L.filter(a=>a.st=='Hadir').length;
+ return `<h1>🗓 Kehadiran</h1><div class="grid"><div class="card stat"><b>${h}</b><span>Total Hadir</span></div><div class="card stat"><b>${L.length?Math.round(h/L.length*100):0}%</b><span>Persentase</span></div></div>${ed?`<div class="card"><select id="as">${D.santri.map(s=>`<option value="${s.id}">${s.nama}</option>`).join('')}</select><select id="at">${['Hadir','Izin','Sakit','Alpa'].map(x=>`<option>${x}</option>`).join('')}</select><button class="btn" onclick="D.att.push({sid:+$('#as').value,st:$('#at').value,t:Date.now()});sv();go('absen')">Catat</button></div>`:''}${L.slice().reverse().slice(0,30).map(a=>`<div class="card row sp">${(D.santri.find(s=>s.id==a.sid)||{}).nama} • ${new Date(a.t).toLocaleDateString('id-ID')}<span class="pill ${a.st=='Hadir'?'G':a.st=='Alpa'?'R':'Y'}">${a.st}</span></div>`).join('')}`};
+VIEWS.admin=()=>`<h1>⚙️ Admin & Ekspor</h1><div class="card"><h3>Pengaturan Lembaga</h3><label>Nama lembaga</label><input id="al" value="${D.set.lembaga}"><label>WhatsApp</label><input id="aw" value="${D.set.wa}"><label>XP per setoran lulus</label><input id="ax" type="number" value="${D.set.xpSetor}"><button class="btn" onclick="D.set={lembaga:$('#al').value,wa:$('#aw').value,xpSetor:+$('#ax').value||100};sv();alert('Tersimpan')">Simpan</button></div>
+<div class="card"><h3>Ekspor Data</h3>${['santri','setoran','att','murojaah'].map(k=>`<div class="row" style="margin-bottom:8px"><b style="min-width:90px">${k}</b><button class="btn s" onclick="exp('${k}','csv')">CSV</button><button class="btn s o" onclick="exp('${k}','json')">JSON</button></div>`).join('')}<button class="btn s gold" onclick="window.print()">🖨 Cetak</button></div>
+<div class="card"><h3>Pengguna</h3>${(D.users||[]).map(u=>`<div class="row sp"><span>${u.nama} (${u.u}) — ${u.role}</span>${u.u!='admin'?`<button class="btn s r" onclick="delUser('${u.u}')">Hapus</button>`:''}</div>`).join('')}
+<h3 style="margin-top:12px">Tambah Pengguna</h3><input id="un1" placeholder="Nama lengkap"><input id="uu" placeholder="Username / No. HP" autocomplete="off"><input id="up" type="password" placeholder="Password (min. 6)" autocomplete="new-password"><select id="ur"><option value="santri">Santri</option><option value="ortu">Orang Tua</option><option value="ustadz">Ustadz</option><option value="admin">Admin</option></select><label class="m">Tautkan ke santri (untuk Santri/Orang Tua)</label><select id="us"><option value="">-</option>${D.santri.map(x=>`<option value="${x.id}">${x.nama}</option>`).join('')}</select><button class="btn" onclick="addUser()">Buat Akun</button></div>`;
+async function addUser(){const x={nama:$('#un1').value.trim(),u:$('#uu').value.trim(),p:$('#up').value,role:$('#ur').value,sid:$('#us').value?+$('#us').value:''};
+ if(!x.nama||!x.u){alert('Nama dan username wajib');return}if((x.role=='santri'||x.role=='ortu')&&!x.sid){alert('Pilih santri yang ditautkan');return}
+ const r=await api('addUser',{user:x});if(r.err){alert(r.err);return}lp=0;alert('Akun dibuat');pull();D.users=(D.users||[]).concat([{u:x.u,role:x.role,nama:x.nama}]);go('admin',1)}
+async function delUser(u){if(!confirm('Hapus akun '+u+'?'))return;const r=await api('delUser',{u});if(r.err){alert(r.err);return}D.users=D.users.filter(x=>x.u!=u);go('admin',1)}
+function exp(k,f){const L=D[k];let t,m;if(f=='json'){t=JSON.stringify(L,null,1);m='application/json'}else{const c=L.length?Object.keys(L[0]).filter(x=>typeof L[0][x]!='object'):[];t=c.join(',')+'\n'+L.map(r=>c.map(x=>'"'+String(r[x]).replace(/"/g,'""')+'"').join(',')).join('\n');m='text/csv'}
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:m}));a.download=k+'.'+f;a.click()}
+VIEWS.profil=VIEWS.home;
+/* Init */
+drawRoles();if(TK&&TK.u){ME=TK.u;role=ME.role;api('load').then(r=>{if(r.err){logout();return}D=Object.assign(JSON.parse(JSON.stringify(DEF)),r.db);start()}).catch(()=>{logout()})}
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+</script></body></html>
