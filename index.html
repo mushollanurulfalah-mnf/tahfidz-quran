@@ -55,7 +55,7 @@ h3{margin-bottom:8px}h1{margin-bottom:12px}
 /* ===== Storage (saveData/loadData/updateData/deleteData) ===== */
 const $=s=>document.querySelector(s);
 /* ===== KONFIGURASI: tempel URL Web App Google Apps Script di sini ===== */
-const API_URL='https://script.google.com/macros/s/AKfycbzy9DMrtTrY520NIBKP0K5LfqTqdtwXBK7zm8glzEOA7aijbEJ1gmg0PQZg3UhVJO2J/exec';
+const API_URL='https://script.google.com/macros/s/AKfycbyMLcKeC3cBEwB1uXkl6YHAzToc-qpwHDOPOhW9hN3XnBeApdm4JJptzk8zTIvHhGba/exec';
 const QAPI='https://equran.id/api/v2/surat/'; // sumber teks Qur'an & audio (Kemenag)
 async function api(a,x){const r=await fetch(API_URL,{method:'POST',body:JSON.stringify(Object.assign({a,token:TOKEN},x||{}))});return r.json()}
 const saveData=(k,v)=>{try{localStorage.setItem('tq_'+k,JSON.stringify(v))}catch(e){}};
