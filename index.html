@@ -55,7 +55,7 @@ h3{margin-bottom:8px}h1{margin-bottom:12px}
 /* ===== Storage (saveData/loadData/updateData/deleteData) ===== */
 const $=s=>document.querySelector(s);
 /* ===== KONFIGURASI: tempel URL Web App Google Apps Script di sini ===== */
-const API_URL='https://script.google.com/macros/s/AKfycbzZPH8ULvWDtOHPXvGY61dPQngdroVcGoj35bqI1UnUF8Xx7WSCfFx_2a0ph680FsJu/exec';
+const API_URL='https://script.google.com/macros/s/AKfycbzy9DMrtTrY520NIBKP0K5LfqTqdtwXBK7zm8glzEOA7aijbEJ1gmg0PQZg3UhVJO2J/exec';
 const QAPI='https://equran.id/api/v2/surat/'; // sumber teks Qur'an & audio (Kemenag)
 async function api(a,x){const r=await fetch(API_URL,{method:'POST',body:JSON.stringify(Object.assign({a,token:TOKEN},x||{}))});return r.json()}
 const saveData=(k,v)=>{try{localStorage.setItem('tq_'+k,JSON.stringify(v))}catch(e){}};
@@ -95,7 +95,8 @@ const lvl=x=>Math.min(4,Math.floor(x/500));
 function addXP(n){const s=$S();s.xp+=n;sv()}
 /* ===== Auth ===== */
 const RL=[['admin','👨‍💼 Admin'],['ustadz','👨‍🏫 Ustadz'],['santri','👦 Santri'],['ortu','👨‍👩‍👧 Orang Tua']];
-function drawRoles(){$('#roles').innerHTML=RL.map(r=>`<button class="${r[0]==role?'on':''}" onclick="role='${r[0]}';drawRoles()">${r[1]}</button>`).join('')}
+function pickRole(r){role=r;drawRoles();$('#lerr').textContent=''}
+function drawRoles(){$('#roles').innerHTML=RL.map(r=>`<button class="${r[0]==role?'on':''}" onclick="pickRole('${r[0]}')">${r[1]}</button>`).join('')}
 async function doLogin(){const u=$('#lu').value.trim(),p=$('#lp').value;if(!u||!p){$('#lerr').textContent='Isi username dan password.';return}
  if(API_URL.startsWith('PASTE')){$('#lerr').textContent='Backend belum dikonfigurasi (isi API_URL).';return}
  $('#lerr').textContent='Memproses...';try{const r=await api('login',{u,p,role});if(!r.ok){$('#lerr').textContent=r.err||'Gagal masuk';return}
@@ -135,8 +136,8 @@ function homeSantri(){const s=$S(),t=(D.todo=s.todo=(s.todo&&s.todo.a?s.todo:{d:
 function homeUstadz(){const S=D.santri,td=D.setoran.filter(x=>days(x.t)==0).length,att=S.filter(s=>s.progress<50||s.streak<3);
  return `<h1>Dashboard ${ME.role=='admin'?'Admin':'Ustadz'}</h1><div class="grid"><div class="card stat"><b>${S.length}</b><span>Total Santri</span></div><div class="card stat"><b>${S.reduce((a,s)=>a+s.ayatH,0)}</b><span>Total Ayat Hafal</span></div><div class="card stat"><b>${td}</b><span>Setoran Hari Ini</span></div><div class="card stat"><b>${D.setoran.filter(x=>x.st=='W').length}</b><span>Menunggu Nilai</span></div><div class="card stat"><b>${att.length}</b><span>Perlu Perhatian</span></div></div>${tblSantri()}`}
 let q='';function tblSantri(){const L=D.santri.filter(s=>s.nama.toLowerCase().includes(q.toLowerCase()));
- return `<div class="card"><div class="row sp"><h3>Daftar Santri</h3><button class="btn s" onclick="formSantri()">+ Tambah</button></div><input placeholder="🔍 Cari santri..." value="${q}" oninput="q=this.value;$('#tb').innerHTML=rows()" id="qs"><table class="tbl"><thead><tr><th>Nama</th><th>Juz</th><th>Progress</th><th>Setoran</th><th>Status</th><th></th></tr></thead><tbody id="tb">${rows()}</tbody></table></div>`}
-function rows(){return D.santri.filter(s=>s.nama.toLowerCase().includes(q.toLowerCase())).map(s=>{const st=D.setoran.filter(x=>x.sid==s.id);const ok=s.progress>=50;return `<tr><td data-l="Nama">${s.nama} (${s.kelas})</td><td data-l="Juz">${s.juz}</td><td data-l="Progress">${s.progress}%</td><td data-l="Setoran">${st.length}</td><td data-l="Status"><span class="pill ${ok?'G':'R'}">${ok?'Lancar':'Perlu Perhatian'}</span></td><td><button class="btn s o" onclick="formSantri(${s.id})">Edit</button> <button class="btn s r" onclick="delSantri(${s.id})">Hapus</button></td></tr>`}).join('')||'<tr><td>Tidak ada data</td></tr>'}
+ return `<div class="card"><div class="row sp"><h3>Daftar Santri</h3><button class="btn s" onclick="formSantri()">+ Tambah</button></div><input placeholder="🔍 Cari santri..." value="${q}" oninput="q=this.value;$('#tb').innerHTML=rowsS()" id="qs"><table class="tbl"><thead><tr><th>Nama</th><th>Juz</th><th>Progress</th><th>Setoran</th><th>Status</th><th></th></tr></thead><tbody id="tb">${rowsS()}</tbody></table></div>`}
+function rowsS(){return D.santri.filter(s=>s.nama.toLowerCase().includes(q.toLowerCase())).map(s=>{const st=D.setoran.filter(x=>x.sid==s.id);const ok=s.progress>=50;return `<tr><td data-l="Nama">${s.nama} (${s.kelas})</td><td data-l="Juz">${s.juz}</td><td data-l="Progress">${s.progress}%</td><td data-l="Setoran">${st.length}</td><td data-l="Status"><span class="pill ${ok?'G':'R'}">${ok?'Lancar':'Perlu Perhatian'}</span></td><td><button class="btn s o" onclick="formSantri(${s.id})">Edit</button> <button class="btn s r" onclick="delSantri(${s.id})">Hapus</button></td></tr>`}).join('')||'<tr><td>Tidak ada data</td></tr>'}
 function formSantri(id){const s=D.santri.find(x=>x.id==id)||{nama:'',kelas:'',juz:30,progress:0,ayatH:0};
  openM(`<h3>${id?'Edit':'Tambah'} Santri</h3><label>Nama</label><input id="fn" value="${s.nama}"><label>Kelas</label><input id="fk" value="${s.kelas}"><label>Juz</label><input id="fj" type="number" min="1" max="30" value="${s.juz}"><label>Progress (%)</label><input id="fp" type="number" min="0" max="100" value="${s.progress}"><div class="row"><button class="btn" onclick="saveSantri(${id||0})">Simpan</button><button class="btn o" onclick="closeM()">Batal</button></div>`)}
 function saveSantri(id){const n=$('#fn').value.trim();if(!n){alert('Nama wajib diisi');return}
